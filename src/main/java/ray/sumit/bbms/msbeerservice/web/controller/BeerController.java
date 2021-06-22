@@ -2,6 +2,7 @@ package ray.sumit.bbms.msbeerservice.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ray.sumit.bbms.msbeerservice.web.model.BeerDto;
 
@@ -18,13 +19,13 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity saveNewBeer(@RequestBody BeerDto beer) {
+    public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beer) {
         //todo: impl will be done
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId) {
+    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @Validated @RequestBody BeerDto beer) {
         //todo: impl will be done
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
