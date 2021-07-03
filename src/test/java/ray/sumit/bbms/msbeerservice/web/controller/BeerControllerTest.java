@@ -41,7 +41,7 @@ class BeerControllerTest {
         beerDto = BeerDto.builder()
                 .beerName("Kalyani Black Label")
                 .beerStyle(BeerStyleEnum.SAISON)
-                .upc(12345L)
+                .upc("098712345678967")
                 .price(new BigDecimal("34.00"))
                 .quantityOnHand(12)
                 .build();
