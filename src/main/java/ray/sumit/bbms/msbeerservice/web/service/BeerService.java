@@ -9,5 +9,5 @@ public interface BeerService {
 
     BeerDto saveNewBeer(BeerDto beerDto);
 
-    void saveExistingBeer(UUID beerId, BeerDto beerDto);
+    BeerDto saveExistingBeer(UUID beerId, BeerDto beerDto);
 }

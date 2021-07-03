@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ray.sumit.bbms.msbeerservice.exception.BeerNotSavedException;
+import ray.sumit.bbms.msbeerservice.exception.BeerNotFoundException;
 import ray.sumit.bbms.msbeerservice.web.model.BeerDto;
 import ray.sumit.bbms.msbeerservice.web.service.BeerService;
 
@@ -27,14 +27,12 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beer) throws BeerNotSavedException {
-        beerService.saveNewBeer(beer);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beer) throws BeerNotFoundException {
+        return new ResponseEntity<>(beerService.saveNewBeer(beer), HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
     public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @Validated @RequestBody BeerDto beer) {
-        beerService.saveExistingBeer(beerId, beer);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(beerService.saveExistingBeer(beerId, beer), HttpStatus.NO_CONTENT);
     }
 }
